@@ -60,6 +60,5 @@ def get_2lvl_timestamp_embeddings(audio, model):
         embed1, t1 = model.get_timestamp_embeddings(audio)
         embed2, t2 = model.get_timestamp_embeddings(audio, window_size=model.timestamp_window * 5)  # larger window
         embed = torch.cat((embed1, embed2), dim=-1)
-        # print(t1==t2)
         return embed, t1
 

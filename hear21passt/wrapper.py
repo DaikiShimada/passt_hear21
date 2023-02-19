@@ -78,11 +78,8 @@ class PasstBasicWrapper(nn.Module):
         audio = audio.cpu()
         n_sounds, n_samples = audio.shape
         audio = audio.unsqueeze(1)  # n_sounds,1, (n_samples+pad*2)
-        # print(audio.shape)
         padded = F.pad(audio, (pad, pad), mode='reflect')
-        # print(padded.shape)
         padded = padded.unsqueeze(1)  # n_sounds,1, (n_samples+pad*2)
-        # print(padded.shape)
         segments = F.unfold(padded, kernel_size=(1, window_size), stride=(1, hop)).transpose(-1, -2).transpose(0, 1)
         timestamps = []
         embeddings = []
@@ -113,11 +110,8 @@ class PasstBasicWrapper(nn.Module):
         audio = audio.cpu()
         n_sounds, n_samples = audio.shape
         audio = audio.unsqueeze(1)  # n_sounds,1, (n_samples+pad*2)
-        # print(audio.shape)
         padded = F.pad(audio, (pad, pad), mode='reflect')
-        # print(padded.shape)
         padded = padded.unsqueeze(1)  # n_sounds,1, (n_samples+pad*2)
-        # print(padded.shape)
         segments = F.unfold(padded, kernel_size=(1, window_size), stride=(1, hop)).transpose(-1, -2).transpose(0, 1)
         timestamps = []
         embeddings = []

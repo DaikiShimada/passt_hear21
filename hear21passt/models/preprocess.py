@@ -3,6 +3,7 @@ import torchaudio
 from torch.nn.functional import conv1d, conv2d
 
 import torch
+import warnings
 
 
 
@@ -27,7 +28,7 @@ class AugmentMelSTFT(nn.Module):
         self.fmin = fmin
         if fmax is None:
             fmax = sr // 2 - fmax_aug_range // 2
-            print(f"Warning: FMAX is None setting to {fmax} ")
+            warnings.warn(f"Warning: FMAX is None setting to {fmax} ")
         self.fmax = fmax
         self.norm = norm
         self.hopsize = hopsize
